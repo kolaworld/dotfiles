@@ -10,7 +10,7 @@
 - clean: ['~']
 
 - link:
-  ~/.vim:
+   ~/.vim:
 
 - create:
   - ~/.vim/tmp/backup
