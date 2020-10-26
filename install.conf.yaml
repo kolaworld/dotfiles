@@ -1,0 +1,23 @@
+ - defaults:
+   link:
+     relink: true
+     create: true
+   command:
+     stdout: true
+     stderr: true
+     quiet: false
+
+- clean: ['~']
+
+- link:
+  ~/.vim:
+
+- create:
+  - ~/.vim/tmp/backup
+  - ~/.vim/tmp/swap
+  - ~/.vim/tmp/undo
+
+- shell:
+  - [git submodule sync --recursive, Syncing submodule remote urls]
+  - [git submodule update --init --recursive, Installing submodules]
+
