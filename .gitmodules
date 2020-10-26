@@ -32,3 +32,4 @@
 [submodule "vim/pack/vendor/opt/vim-code-dark"]
 	path = vim/pack/vendor/opt/vim-code-dark
 	url = https://github.com/tomasiser/vim-code-dark.git
+	ignore = dirty
