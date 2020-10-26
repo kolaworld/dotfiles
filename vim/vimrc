@@ -241,7 +241,8 @@ let &t_EI = "\<Esc>[4 q"
 "==============================
 " STATUS LINE
 "==============================
-let g:airline_theme='molokai'
+" let g:airline_theme='molokai'
+let g:airline_theme='codedark'
 
 "==============================
 " MARKDOWN
