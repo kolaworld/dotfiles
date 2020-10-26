@@ -2,3 +2,12 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
+[submodule "vim/pack/vendor/start/delimitMate"]
+	path = vim/pack/vendor/start/delimitMate
+	url = https://github.com/Raimondi/delimitMate.git
+[submodule "vim/pack/vendor/start/vim-surround"]
+	path = vim/pack/vendor/start/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/pack/vendor/start/vim-markdown"]
+	path = vim/pack/vendor/start/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown.git
