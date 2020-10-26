@@ -9,7 +9,7 @@
 ## Plugins
 
 - [delimitMate](https://github.com/Raimondi/delimitMate)
-- [vim-endwise](git://github.com/tpope/vim-endwise)
+- [vim-endwise](https://github.com/tpope/vim-endwise)
 - [vim-surround](https://github.com/tpope/vim-surround)
 - [vim-markdown](https://github.com/plasticboy/vim-markdown)
 - [markdown-preview](https://github.com/iamcco/markdown-preview.nvim)
