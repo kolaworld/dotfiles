@@ -5,6 +5,7 @@
 [submodule "vim/pack/vendor/start/delimitMate"]
 	path = vim/pack/vendor/start/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
+	ignore = dirty
 [submodule "vim/pack/vendor/start/vim-surround"]
 	path = vim/pack/vendor/start/vim-surround
 	url = https://github.com/tpope/vim-surround.git
@@ -29,7 +30,3 @@
 [submodule "vim/pack/vendor/start/vim-terraform"]
 	path = vim/pack/vendor/start/vim-terraform
 	url = https://github.com/hashivim/vim-terraform.git
-[submodule "vim/pack/vendor/opt/vim-code-dark"]
-	path = vim/pack/vendor/opt/vim-code-dark
-	url = https://github.com/tomasiser/vim-code-dark.git
-	ignore = dirty
