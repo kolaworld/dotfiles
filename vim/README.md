@@ -21,4 +21,5 @@
 - [vim-json](https://github.com/elzr/vim-json)
 - [ctrlp](https://github.com/ctrlpvim/ctrlp.vim)
 - [vim-fugitive](https://github.com/tpope/vim-fugitive)
+- [vim-virtualenv](https://github.com/jmcantrell/vim-virtualenv)
 
