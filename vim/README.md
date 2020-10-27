@@ -20,4 +20,5 @@
 - [vim-code-dark](https://github.com/tomasiser/vim-code-dark)
 - [vim-json](https://github.com/elzr/vim-json)
 - [ctrlp](https://github.com/ctrlpvim/ctrlp.vim)
+- [vim-fugitive](https://github.com/tpope/vim-fugitive)
 
