@@ -2,19 +2,23 @@
 
 # Script for adding vim plugin using vim native plugin manager
 
-# Args: remote repo url
+# Args: $1=opt or start $2=remote repo url
 # Output: Installs the plugin as a git submodule
 #         Updates .gitmodules to ignore dirty commits
 #         Generates the vim helptags
 
 set -euo pipefail
 
-plugname=$(basename $1)
+if [[ $1 != 'opt' && $1 != 'start' ]]; then
+    echo -e 'First arg must be "start" or "opt" to set where the plugin should be loaded in vim/pack/vendor/'
+    exit 1
+fi
+plugname=$(basename $2)
 plugname="${plugname%.*}"
 
-PLUGIN_PATH=vim/pack/vendor/start
+PLUGIN_PATH=vim/pack/vendor/$1
 
-git submodule add $1 $PLUGIN_PATH/$plugname \
+git submodule add $2 $PLUGIN_PATH/$plugname \
 && git config -f .gitmodules submodule.$PLUGIN_PATH/$plugname.ignore dirty \
 && vim -u NONE -c "helptags $PLUGIN_PATH/$plugname/doc" -c q
 
