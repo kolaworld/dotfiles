@@ -42,3 +42,8 @@
 	path = vim/pack/vendor/start/vim-code-dark
 	url = https://github.com/tomasiser/vim-code-dark.git
 	ignore = dirty
+[submodule "/Users/kolaawe/dotfiles/vim/pack/vendor/start/vim-json"]
+	path = /Users/kolaawe/dotfiles/vim/pack/vendor/start/vim-json
+	url = https://github.com/elzr/vim-json.git
+[submodule "vim/pack/vendor/start/vim-json"]
+	ignore = dirty
