@@ -54,10 +54,6 @@
 	path = vim/pack/vendor/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
 	ignore = dirty
-[submodule "vim/pack/vendor/opt/vim-pyenv"]
-	path = vim/pack/vendor/opt/vim-pyenv
-	url = https://github.com/lambdalisue/vim-pyenv.git
-	ignore = dirty
 [submodule "vim/pack/vendor/start/jedi-vim"]
 	path = vim/pack/vendor/start/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim.git
