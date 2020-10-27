@@ -47,3 +47,8 @@
 	url = https://github.com/elzr/vim-json.git
 [submodule "vim/pack/vendor/start/vim-json"]
 	ignore = dirty
+[submodule "/Users/kolaawe/dotfiles/vim/pack/vendor/start/ctrlp.vim"]
+	path = /Users/kolaawe/dotfiles/vim/pack/vendor/start/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule "vim/pack/vendor/start/ctrlp.vim"]
+	ignore = dirty
