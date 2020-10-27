@@ -21,5 +21,4 @@
   - [git submodule sync --recursive, Syncing submodule remote urls]
   - [git submodule update --init --recursive, Installing submodules]
   - [yarn --cwd ~/.vim/pack/vendor/start/markdown-preview/app install, Yarn install markdown-preview vim plugin]
-  - [vim -u NONE -c "helptags ALL" -c q]
 

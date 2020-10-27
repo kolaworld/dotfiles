@@ -18,4 +18,4 @@
 - [vim-airline](https://github.com/vim-airline/vim-airline)
 - [vim-airline-themes](https://github.com/vim-airline/vim-airline-themes)
 - [vim-code-dark](https://github.com/tomasiser/vim-code-dark)
-
+- [vim-json](https://github.com/elzr/vim-json)
