@@ -58,3 +58,7 @@
 	path = vim/pack/vendor/start/vim-virtualenv
 	url = https://github.com/jmcantrell/vim-virtualenv.git
 	ignore = dirty
+[submodule "vim/pack/vendor/start/YouCompleteMe"]
+	path = vim/pack/vendor/start/YouCompleteMe
+	url = https://github.com/ycm-core/YouCompleteMe.git
+	ignore = dirty
