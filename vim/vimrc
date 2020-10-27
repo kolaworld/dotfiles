@@ -239,11 +239,11 @@ let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[4 q"
 
 "==============================
-" STATUS LINE
+" VIM-AIRLINE - STATUS LINE
 "==============================
 " let g:airline_theme='molokai'
 let g:airline_theme='codedark'
-
+let g:airline#extensions#virtualenv#enabled = 1
 "==============================
 " MARKDOWN
 "==============================
@@ -279,22 +279,7 @@ let g:jedi#show_call_signatures_delay = 0
 let g:jedi#use_splits_not_buffers = 'right'
 
 "==============================
-" VIM-PYENV - ACTIVATE PYENV VIRTUALENV 
+" VIM-VIRTUALENV - ACTIVATE PYENV VIRTUALENV 
 "==============================
-" Stored in vendor/opt/ since it must be
-" loaded after jedi-vim
-packadd! vim-pyenv
-
-" autocmd to change python version of jedi when
-" pyenv virtual env changes
-if jedi#init_python()
-  function! s:jedi_auto_force_py_version() abort
-    let g:jedi#force_py_version = pyenv#python#get_internal_major_version()
-  endfunction
-  augroup vim-pyenv-custom-augroup
-    autocmd! *
-    autocmd User vim-pyenv-activate-post   call s:jedi_auto_force_py_version()
-    autocmd User vim-pyenv-deactivate-post call s:jedi_auto_force_py_version()
-  augroup END
-endif
+let g:virtualenv_directory = '~/.pyenv/versions/'
 
