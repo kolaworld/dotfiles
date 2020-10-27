@@ -22,4 +22,5 @@
 - [ctrlp](https://github.com/ctrlpvim/ctrlp.vim)
 - [vim-fugitive](https://github.com/tpope/vim-fugitive)
 - [vim-pyenv](https://github.com/lambdalisue/vim-pyenv)
+- [jedi-vim](https://github.com/davidhalter/jedi-vim)
 

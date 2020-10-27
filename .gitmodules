@@ -58,3 +58,7 @@
 	path = vim/pack/vendor/opt/vim-pyenv
 	url = https://github.com/lambdalisue/vim-pyenv.git
 	ignore = dirty
+[submodule "vim/pack/vendor/start/jedi-vim"]
+	path = vim/pack/vendor/start/jedi-vim
+	url = https://github.com/davidhalter/jedi-vim.git
+	ignore = dirty
