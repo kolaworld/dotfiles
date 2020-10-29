@@ -2,7 +2,7 @@
    link:
      relink: true
      create: true
-   command:
+   shell:
      stdout: true
      stderr: true
      quiet: false
@@ -21,4 +21,5 @@
   - [git submodule sync --recursive, Syncing submodule remote urls]
   - [git submodule update --init --recursive, Installing submodules]
   - [yarn --cwd ~/.vim/pack/vendor/start/markdown-preview/app install, Yarn install markdown-preview vim plugin]
+  - [cd ~/.vim/pack/vendor/start/YouCompleteMe && python install.py --all, Install YouCompleteMe]
 
