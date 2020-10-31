@@ -272,50 +272,7 @@ let g:terraform_fmt_on_save=1
 "==============================
 
 "==============================
-" JEDI-VIM - PYTHON AUTOCOMPLETION
-"==============================
-let g:jedi#show_call_signatures = 2
-let g:jedi#show_call_signatures_delay = 0
-let g:jedi#use_splits_not_buffers = 'right'
-
-"==============================
-" VIM-VIRTUALENV - ACTIVATE PYENV VIRTUALENV 
-"==============================
-"let g:virtualenv_directory = '~/.pyenv/versions'
-
-"==============================
 " YOUCOMPLETEME - CODE AUTOCOMPLETION
 "==============================
-"let g:ycm_python_interpreter_path = '/Users/kolaawe/.pyenv/versions/zendesk-3.6.8/bin/python'
-"let g:ycm_python_sys_path = ['', '/Users/kolaawe/.pyenv/versions/3.6.8/lib/python36.zip', '/Users/kolaawe/.pyenv/versions/3.6.8/lib/python3.6', '/Users/kolaawe/.pyenv/versions/3.6.8/lib/python3.6/lib-dynload', '/Users/kolaawe/.pyenv/versions/zendesk-3.6.8/lib/python3.6/site-packages']
-"let g:ycm_extra_conf_vim_data = [
-""  \  'g:ycm_python_interpreter_path',
-""  \  'g:ycm_python_sys_path'
-""  \]
-"let g:ycm_global_ycm_extra_conf = '~/global_extra_conf.py'
-
-let g:py_prev_wd = ''
-let g:py_cwd = expand('%:p:h') 
-
-let g:ycm_extra_conf_vim_data = [
-  \  'g:py_prev_wd',
-  \  'g:py_cwd'
-  \]
-let g:ycm_global_ycm_extra_conf = '~/global_extra_conf.py'
-
-function! s:update_ycm_py_paths() abort
-    let g:py_prev_wd = g:py_cwd
-    let g:py_cwd = expand('%:p:h')
-    echo "prev: " . g:py_prev_wd 
-    echo "cur: " . g:py_cwd
-    let g:ycm_extra_conf_vim_data = [
-      \  'g:py_prev_wd',
-      \  'g:py_cwd'
-      \]
-endfunction
-
-"augroup ycm_set_py_paths
-""    au!
-""    au FileType python call s:update_ycm_py_paths()
-"augroup END
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_global_extra_conf.py'
 
