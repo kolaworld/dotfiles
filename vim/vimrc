@@ -272,14 +272,7 @@ let g:terraform_fmt_on_save=1
 "==============================
 
 "==============================
-" JEDI-VIM - PYTHON AUTOCOMPLETION
+" YOUCOMPLETEME - CODE AUTOCOMPLETION
 "==============================
-let g:jedi#show_call_signatures = 2
-let g:jedi#show_call_signatures_delay = 0
-let g:jedi#use_splits_not_buffers = 'right'
-
-"==============================
-" VIM-VIRTUALENV - ACTIVATE PYENV VIRTUALENV 
-"==============================
-let g:virtualenv_directory = '~/.pyenv/versions/'
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_global_extra_conf.py'
 
