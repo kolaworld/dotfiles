@@ -18,16 +18,16 @@ set undofile " Save undo files
 set undodir=~/.vim/tmp/undo//,.
 
 "==============================
-" NO OPERATION 
+" NO OPERATION
 "==============================
 " 'Q' in normal mode enters Ex mode.
-nmap Q <Nop> 
+nmap Q <Nop>
 " remap leader to space
 nnoremap <SPACE> <Nop>
 let mapleader = ' '
 
 "==============================
-" DISPLAY | COLOR 
+" DISPLAY | COLOR
 "==============================
 colorscheme codedark
 syntax on
@@ -54,17 +54,17 @@ augroup END
 "==============================
 set ignorecase " search case insensitive until first capital
 set smartcase
-set incsearch " do incremental search 
-set hlsearch "highlight search 
+set incsearch " do incremental search
+set hlsearch "highlight search
 command C let @/="" " Clear search
 set wildmenu " Display all matching files when tab complete
 set wildmode=longest:list,full "Complete longest common, then list, then tab complete list.
 
 "==============================
-" EDITING 
+" EDITING
 "==============================
+packadd! editexisting
 set hidden " allow auto-hiding of edited buffers
-
 set autoindent " Enable auto indentation
 set tabstop=4 " number of visual spaces per TAB in file
 set softtabstop=4 " number of spaces per TAB when editing
@@ -92,7 +92,7 @@ noremap <Leader>y "*y
 noremap <Leader>p "*p
 
 "==============================
-" MOVEMENT 
+" MOVEMENT
 "==============================
 
 " move vertically by visual line
@@ -120,7 +120,7 @@ inoremap <Down>  <ESC>:echoe "Use j"<CR>
 " CURSOR
 "==============================
 "  1 -> blinking block
-"  2 -> solid block 
+"  2 -> solid block
 "  3 -> blinking underscore
 "  4 -> solid underscore
 "  5 -> blinking vertical bar
@@ -171,7 +171,32 @@ let g:terraform_fmt_on_save=1
 "==============================
 
 "==============================
+" PLUGINS - PYTHON
+"==============================
+
+"==============================
 " YOUCOMPLETEME - CODE AUTOCOMPLETION
 "==============================
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_global_extra_conf.py'
 
+"==============================
+" python-syntax
+"==============================
+let g:python_highlight_all = 1
+
+"==============================
+" SimplyFold
+"==============================
+let g:SimpylFold_docstring_preview = 1
+
+"==============================
+" ale
+"==============================
+let g:airline#extensions#ale#enabled = 1
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+let g:ale_linters_explicit = 1
+let g:ale_fixers = {
+    \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+    \}
