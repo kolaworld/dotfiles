@@ -83,8 +83,7 @@ inoremap <C-U> <C-G>u<C-U>
 " Only define it when not defined already.
 " Revert with: ":delcommand DiffOrig".
 if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+  command DiffOrig vert new | set bt=nofile | r ++edit | wincmd p | diffthis
 endif
 
 " Copy / paste from clipboard
@@ -178,7 +177,7 @@ let g:terraform_fmt_on_save=1
 " YOUCOMPLETEME - CODE AUTOCOMPLETION
 "==============================
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_global_extra_conf.py'
-nnoremap <leader>gd :YcmCompleter GoTo<CR>
+nnoremap <leader>gt :YcmCompleter GoTo<CR>
 nnoremap <leader>td :YcmCompleter GetType<CR>
 
 "==============================
