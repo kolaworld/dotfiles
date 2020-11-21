@@ -1,166 +1,102 @@
-" FOR VIM 8.2+ DOWNLOADED FROM Homebrew 
-" **FROM defaults.vim**
+" FOR VIM 8.2+ DOWNLOADED FROM Homebrew
 
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-" Avoid side effects when it was already reset.
-if &compatible
-  set nocompatible
-endif
-
-" Allow backspacing over everything in insert mode.
-set backspace=indent,eol,start
-
-set history=200		" keep 200 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-
-set ttimeout		" time out for key codes
+"==============================
+" DEFAULTS
+"==============================
+set nocompatible " use Vim settings, rather than Vi settings
+filetype plugin indent on
+set history=2000 " keep x lines of command line history
+set timeout	" time out for and mappings key codes
 set ttimeoutlen=100	" wait up to 100ms after Esc for special key
+set nrformats-=octal " Do not recognize octal numbers for Ctrl-A and Ctrl-X
+set mouse+=a " enable mouse mode (scrolling, selection, etc)
+set backup " Save backup files
+set backupdir=~/.vim/tmp/backup//,.
+set swapfile " Save swap files
+set directory=~/.vim/tmp/swap//,.
+set undofile " Save undo files
+set undodir=~/.vim/tmp/undo//,.
 
-" Show @@@ in the last line if it is truncated.
-set display=truncate
-
-" Show a few lines of context around the cursor.  Note that this makes the
-" text scroll if you mouse-click near the start or end of the window.
-set scrolloff=5
-
-" Do incremental searching when it's possible to timeout.
-if has('reltime')
-  set incsearch
-endif
-
-" Do not recognize octal numbers for Ctrl-A and Ctrl-X, most users find it
-" confusing.
-set nrformats-=octal
-
-" 'Q' in normal mode enters Ex mode. You almost never want this.
+"==============================
+" NO OPERATION
+"==============================
+" 'Q' in normal mode enters Ex mode.
 nmap Q <Nop>
+" remap leader to space
+nnoremap <SPACE> <Nop>
+let mapleader = ' '
+
+"==============================
+" DISPLAY | COLOR
+"==============================
+colorscheme codedark
+syntax on
+set showcmd	" display incomplete commands
+set scrolloff=5 " Show a few lines of context around the cursor.
+set number " Show line numbers.
+set laststatus=2 " Always show the status line at the bottom.
+
+set cursorline " Highlight the current line
+set splitbelow " open new split panes to right and bottom
+
+set splitright
+augroup vimStartup
+  au!
+  " When editing a file, always jump to the last known cursor position.
+  autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+    \ |   exe "normal! g`\""
+    \ | endif
+augroup END
+
+"==============================
+" SEARCH
+"==============================
+set ignorecase " search case insensitive until first capital
+set smartcase
+set incsearch " do incremental search
+set hlsearch "highlight search
+command C let @/="" " Clear search
+set wildmenu " Display all matching files when tab complete
+set wildmode=longest:list,full "Complete longest common, then list, then tab complete list.
+
+"==============================
+" EDITING
+"==============================
+packadd! editexisting
+set hidden " allow auto-hiding of edited buffers
+set autoindent " Enable auto indentation
+set tabstop=4 " number of visual spaces per TAB in file
+set softtabstop=4 " number of spaces per TAB when editing
+set shiftwidth=4 " insert x spaces on TAB
+set expandtab " replace tabs with white spaces
+
+set backspace=indent,eol,start " backspace over everything in insert mode.
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 " Revert with ":iunmap <C-U>".
 inoremap <C-U> <C-G>u<C-U>
 
-" enable mouse mode (scrolling, selection, etc)
-set mouse+=a  
-
-
-" Enable file type detection.
-" Use the default filetype settings, so that mail gets 'tw' set to 72,
-" 'cindent' is on in C files, etc.
-" Also load indent files, to automatically do language-dependent indenting.
-" Revert with ":filetype off".
-filetype plugin indent on
-
-" Put these in an autocmd group, so that you can revert them with:
-" ":augroup vimStartup | au! | augroup END"
-augroup vimStartup
-  au!
-
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid, when inside an event handler
-  " (happens when dropping a file on gvim) and for a commit message (it's
-  " likely a different one than last time).
-  autocmd BufReadPost *
-    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-    \ |   exe "normal! g`\""
-    \ | endif
-
-augroup END
-
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
 " Only define it when not defined already.
 " Revert with: ":delcommand DiffOrig".
 if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+  command DiffOrig vert new | set bt=nofile | r ++edit | wincmd p | diffthis
 endif
 
-if has('langmap') && exists('+langremap')
-  " Prevent that the langmap option applies to characters that result from a
-  " mapping.  If set (default), this may break plugins (but it's backward
-  " compatible).
-  set nolangremap
-endif
+" Copy / paste from clipboard
+noremap <Leader>y "*y
+noremap <Leader>p "*p
 
-" ===FINDING FIlES===
-" Search down into subfolders
-" Provides tab-completion for all file-related tasks
-set path+=**
+"==============================
+" MOVEMENT
+"==============================
 
-"Complete longest common string, then list alternatives.
-set wildmode=list,longest
-" Display all matching files when tab complete
-set wildmenu
-
-" ===FROM vimrc_example.vim w/additions===
-
-" Save backup files
-set backup
-set backupdir=~/.vim/tmp/backup//,.
-
-" Save swap files
-set swapfile
-set directory=~/.vim/tmp/swap//,.
-
-" Save undo files
-set undofile
-set undodir=~/.vim/tmp/undo//,.
-
-if &t_Co > 2 || has("gui_running")
-  " Switch syntax highlighting on when the terminal has colors or when using the
-  " GUI (which always has colors).
-  syntax on
-  " Switch on highlighting the last used search pattern.
-  set hlsearch
-endif
-
-" Put these in an autocmd group, so that we can delete them easily.
-augroup vimrcEx
-  au!
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-augroup END
-
-" Add optional packages.
-"
-" The matchit plugin makes the % command work better, but it is not backwards
-" compatible.
-" The ! means the package won't be loaded right away but when plugins are
-" loaded during initialization.
-packadd! matchit
-
-colorscheme codedark
-
-" Show line numbers.
-set number
-
-" This enables relative line numbering mode. With both number and
-" relativenumber enabled, the current line shows the true line number, while
-" all other lines (above and below) are numbered relative to the current line.
-" This is useful because you can tell, at a glance, what count is needed to
-" jump up or down to a particular line, by {count}k to go up or {count}j to go
-" down.
-" set relativenumber
-
-" Always show the status line at the bottom, even if you only have one window open.
-set laststatus=2
-
-" By default, Vim doesn't let you hide a buffer (i.e. have a buffer that isn't
-" shown in any window) that has unsaved changes. This is to prevent you from "
-" forgetting about unsaved changes and then quitting e.g. via `:qa!`. We find
-" hidden buffers helpful enough to disable this protection. See `:help hidden`
-" for more information on this.
-set hidden
-
-" This setting makes search case-insensitive when all characters in the string
-" being searched are lowercase. However, the search becomes case-sensitive if
-" it contains any capital letters. This makes searching more convenient.
-set ignorecase
-set smartcase
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
 
 " quicker window movement
 nnoremap <C-j> <C-w>j
@@ -168,12 +104,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" Try to prevent bad habits like using the arrow keys for movement. This is
-" not the only possible bad habit. For example, holding down the h/j/k/l keys
-" for movement, rather than using more efficient movement commands, is also a
-" bad habit. The former is enforceable through a .vimrc, while we don't know
-" how to prevent the latter.
-" Do this in normal mode...
+" TODO: Replace with hardmode https://github.com/wikitopian/hardmode/blob/master/plugin/hardmode.vim
 nnoremap <Left>  :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up>    :echoe "Use k"<CR>
@@ -184,47 +115,11 @@ inoremap <Right> <ESC>:echoe "Use l"<CR>
 inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
 
-" Set tab size
-set tabstop=4
-set shiftwidth=4
-
-" Enable auto indentation
-set autoindent
-
-" replace tabs with white spaces
-set expandtab
-
-" Remove multiple spaces on single backspace
-" value must match tabletop=x setting
-set softtabstop=4
-
-" Highlight the current line
-set cursorline
-
-
-" open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
-
-" move vertically by visual line
-nnoremap j gj
-nnoremap k gk
-
-" Clear search
-command C let @/=""
-
-nnoremap <SPACE> <Nop>
-let mapleader = ' '
-
-" Copy / paste from clipboard
-noremap <Leader>y "*y
-noremap <Leader>p "*p
-
 "==============================
-" CURSOR SETTINGS
+" CURSOR
 "==============================
 "  1 -> blinking block
-"  2 -> solid block 
+"  2 -> solid block
 "  3 -> blinking underscore
 "  4 -> solid underscore
 "  5 -> blinking vertical bar
@@ -239,15 +134,19 @@ let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[4 q"
 
 "==============================
+" PLUGINS
+"==============================
+
+"==============================
 " VIM-AIRLINE - STATUS LINE
 "==============================
 " let g:airline_theme='molokai'
 let g:airline_theme='codedark'
 let g:airline#extensions#virtualenv#enabled = 1
+
 "==============================
 " MARKDOWN
 "==============================
-
 nmap <leader>om <Plug>MarkdownPreview
 nmap <leader>cm <Plug>MarkdownPreviewStop
 
@@ -263,7 +162,6 @@ augroup END
 "==============================
 " TERRAFORM
 "==============================
-
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
 
@@ -272,7 +170,33 @@ let g:terraform_fmt_on_save=1
 "==============================
 
 "==============================
+" PLUGINS - PYTHON
+"==============================
+
+"==============================
 " YOUCOMPLETEME - CODE AUTOCOMPLETION
 "==============================
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_global_extra_conf.py'
+nnoremap <leader>gt :YcmCompleter GoTo<CR>
+nnoremap <leader>td :YcmCompleter GetType<CR>
 
+"==============================
+" python-syntax
+"==============================
+let g:python_highlight_all = 1
+
+"==============================
+" SimplyFold
+"==============================
+let g:SimpylFold_docstring_preview = 1
+
+"==============================
+" ale
+"==============================
+let g:airline#extensions#ale#enabled = 1
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+let g:ale_linters_explicit = 1
+let g:ale_fixers = {
+    \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+    \}

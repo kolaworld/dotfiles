@@ -58,3 +58,15 @@
 	path = vim/pack/vendor/start/YouCompleteMe
 	url = https://github.com/ycm-core/YouCompleteMe.git
 	ignore = dirty
+[submodule "vim/pack/vendor/start/python-syntax"]
+	path = vim/pack/vendor/start/python-syntax
+	url = https://github.com/vim-python/python-syntax
+	ignore = dirty
+[submodule "vim/pack/vendor/start/ale"]
+	path = vim/pack/vendor/start/ale
+	url = https://github.com/dense-analysis/ale.git
+	ignore = dirty
+[submodule "vim/pack/vendor/start/SimpylFold"]
+	path = vim/pack/vendor/start/SimpylFold
+	url = https://github.com/tmhedberg/SimpylFold.git
+	ignore = dirty
