@@ -70,3 +70,7 @@
 	path = vim/pack/vendor/start/SimpylFold
 	url = https://github.com/tmhedberg/SimpylFold.git
 	ignore = dirty
+[submodule "zsh/oh-my-zsh/custom/plugins/zsh-history-substring-search"]
+	path = zsh/oh-my-zsh/custom/plugins/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search
+	ignore = dirty
