@@ -24,6 +24,7 @@ fi
 
 brew_forms_installed=$(brew list --formula)
 brew_forms=(
+    "autojump"
     "cmake"
     "coreutils"
     "git"

@@ -69,14 +69,15 @@ ZSH_CUSTOM="$HOME/dotfiles/zsh/oh-my-zsh/custom"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-git
-zsh-syntax-highlighting
-zsh-autosuggestions
-history-substring-search
-docker
-sbt
-nvm
-vi-mode
+    autojump
+    git
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+    history-substring-search
+    docker
+    sbt
+    nvm
+    vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
