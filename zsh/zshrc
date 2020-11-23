@@ -91,9 +91,21 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 # vi-mode plugin
 # https://dougblack.io/words/zsh-vi-mode.html
+#function zle-line-init zle-keymap-select {
+#    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+#    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+#    zle reset-prompt
+#}
+
+# https://unix.stackexchange.com/a/565255
+oldPS1="$PS1"
 function zle-line-init zle-keymap-select {
-    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
-    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+    VIM_NORMAL_PROMPT="%{$fg_bold[yellow]%} [% NOR]%  %{$reset_color%}"
+    VIM_INSERT_PROMPT="%{$fg_bold[green]%} [% INS]%  %{$reset_color%}"
+    PS1="${${KEYMAP/vicmd/$VIM_NORMAL_PROMPT}/(main|viins)/$VIM_INSERT_PROMPT}$oldPS1"
+    PS2=$PS1
+    RPS1=""
+    RPS2=""
     zle reset-prompt
 }
 
