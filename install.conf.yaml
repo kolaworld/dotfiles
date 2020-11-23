@@ -10,7 +10,10 @@
 - clean: ['~']
 
 - link:
-   ~/.vim:
+   ~/.vim: vim
+   ~/.zshrc:
+    path: zsh/zshrc
+    force: true
 
 - create:
   - ~/.vim/tmp/backup
@@ -18,6 +21,8 @@
   - ~/.vim/tmp/undo
 
 - shell:
+  - [setup_scripts/setup_brew.sh, Install brew and brew formulas/casks if not exist]
+  - [setup_scripts/setup_gcloud.sh, Install or update gcloud]
   - [git submodule sync --recursive, Syncing submodule remote urls]
   - [git submodule update --init --recursive, Installing submodules]
   - [yarn --cwd ~/.vim/pack/vendor/start/markdown-preview/app install, Yarn install markdown-preview vim plugin]
