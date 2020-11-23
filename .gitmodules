@@ -78,3 +78,7 @@
 	path = zsh/oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 	ignore = dirty
+[submodule "zsh/oh-my-zsh/custom/plugins/zsh-autosuggestions"]
+	path = zsh/oh-my-zsh/custom/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+	ignore = dirty
