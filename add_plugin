@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-# Script for adding vim plugin using vim native plugin manager
+# Script for adding a vim or ohmyzh plugin using git submodules
 
-# Args: $1=[vim or zsh] $2=[opt | start | plugins | themes] $2=[remote-repo-url]
+# Args: $1=[vim | zsh] $2=[opt | start | plugins | themes] $3=[remote-repo-url]
 # Output: Installs the plugin as a git submodule
 #         Updates .gitmodules to ignore dirty commits
 #         Generates the vim helptags
