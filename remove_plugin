@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+# Script for removing vim or ohmyzsh plugins
+
+# Args: $1=[vim | zsh] $2=[plugin_name]
+# Output: removes the vim plugin submodule
+
+set -euo pipefail
+
+VIM_PLUGIN_PATH=vim/pack/vendor
+ZSH_PLUGIN_PATH=zsh/oh-my-zsh/custom
+
+if [[ $1 == "vim" ]]; then
+    PLUGIN_PATH=$VIM_PLUGIN_PATH
+elif [[ $1 == "zsh" ]]; then
+    PLUGIN_PATH=$ZSH_PLUGIN_PATH
+else
+    echo -e First arg \"$1\" must be \"vim\" or \"zsh\" >&2
+    exit 1
+fi
+
+arg_dir=$(dirname $2)
+if [[ -d $2 && ( $arg_dir == $PLUGIN_PATH/opt  || $arg_dir == $PLUGIN_PATH/start || \
+    $arg_dir == $PLUGIN_PATH/plugins || $args_dir == $PLUGIN_PATH/themes ) ]]; then
+    PLUGIN_PATH=$2
+elif [[  -d $PLUGIN_PATH/opt/$2 ]]; then
+    PLUGIN_PATH=$PLUGIN_PATH/opt/$2
+elif [[ -d $PLUGIN_PATH/start/$2 ]]; then
+    PLUGIN_PATH=$PLUGIN_PATH/start/$2
+elif [[ -d $PLUGIN_PATH/plugins/$2 ]]; then
+    PLUGIN_PATH=$PLUGIN_PATH/plugins/$2
+elif [[ -d $PLUGIN_PATH/themes/$2 ]]; then
+    PLUGIN_PATH=$PLUGIN_PATH/themes/$2
+else
+    echo -e Could not find $1 plugin \"$2\" in path \"$VIM_PLUGIN_PATH\" \
+        or \"$ZSH_PLUGIN_PATH\" >&2
+    exit 1
+fi
+
+git submodule deinit -f -- $PLUGIN_PATH \
+    && rm -rf .git/modules/$PLUGIN_PATH \
+    && git rm -f $PLUGIN_PATH \
+    && echo Sucessfully removed $1 plugin \"$2\"
