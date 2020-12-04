@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# Script for adding a vim or ohmyzh plugin using git submodules
+
+# Args: $1=[vim | zsh] $2=[opt | start | plugins | themes] $3=[remote-repo-url]
+# Output: Installs the plugin as a git submodule
+#         Updates .gitmodules to ignore dirty commits
+#         Generates the vim helptags
+
+set -euo pipefail
+
+if [[ $1 == "vim" && ( $2 == "opt" || $2 == "start" ) ]]; then
+    PLUGIN_PATH=$1/pack/vendor/$2
+elif [[ $1 == "zsh" && ( $2 == "plugins" || $2 == "themes" ) ]]; then
+    PLUGIN_PATH=$1/oh-my-zsh/custom/$2
+else
+    echo -e First arg \"$1\" must be \"vim\" and \
+        second arg \"$2\" must be \"opt\" or \"start\" OR \
+        first arg \"$1\" must be \"zsh\" and \
+        second arg \"$2\" must be \"plugins\" or \"themes\"
+    exit 1
+fi
+
+plugname=$(basename $3)
+plugname="${plugname%.*}"
+
+mkdir -p $PLUGIN_PATH
+
+echo Adding $1 plugin \"$plugname\" as a git submodule at path \"$PLUGIN_PATH\"
+
+git submodule add $3 $PLUGIN_PATH/$plugname \
+    && git config -f .gitmodules submodule.$PLUGIN_PATH/$plugname.ignore dirty
+
+if [[ $1 == "vim" ]]; then
+    echo Generating help tags for $1 plugin \"$plugname\"
+    vim -u NONE -c "helptags $PLUGIN_PATH/$plugname/doc" -c q
+fi
