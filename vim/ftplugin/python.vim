@@ -11,6 +11,6 @@ set expandtab " replace tabs with white spaces
 " ale
 "==============================
 " Check Python files with flake8.
-let b:ale_linters = ['flake8']
+let b:ale_linters = ['flake8', 'pycodestyle']
 " Fix Python files with black
-let b:ale_fixers = ['black', 'isort']
+let b:ale_fixers = ['black', 'isort', 'yapf']
