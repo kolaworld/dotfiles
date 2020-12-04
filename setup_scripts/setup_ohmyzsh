@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Script for installing ohmyzsh, must run after /setup_brew
+
+# Args: None
+# Output: Installs ohmyzsh
+
+set -euo pipefail
+
+if [[ ! $(command -v zsh) ]]; then
+    echo zsh not found, run ./setup_brew first >&2
+    exit 1
+else
+    echo Installing ohmyzsh...
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --keep-zshrc
+fi
