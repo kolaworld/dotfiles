@@ -170,4 +170,3 @@ if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-clou
 
 # export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 # export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC -XX:ReservedCodeCacheSize=512m -Xss36M -Xms2G -Xmx8G"
-
