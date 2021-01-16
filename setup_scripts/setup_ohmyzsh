@@ -10,6 +10,9 @@ set -euo pipefail
 if [[ ! $(command -v zsh) ]]; then
     echo zsh not found, run ./setup_brew first >&2
     exit 1
+elif [[ -d $HOME/.oh-my-zsh ]]; then
+    echo ohmyzsh already installed at $HOME/.oh-my-zsh
+    exit 0
 else
     echo Installing ohmyzsh...
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --keep-zshrc
