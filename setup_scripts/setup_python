@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+# Script for setting up python
+# Must run after setup_brew
+
+# Args: None
+# Output: Installs or updates gcloud
+
+set -euo pipefail
+
+if [[ ! $(command -v pyenv) || ! $(command -v pyenv-virtualenv) || ! $(command -v pipx) ]]; then
+    echo pyenv, pyenv-virtualenv, or pipx not found, run ./setup_brew first >&2
+    exit 1
+fi
+
+PY3=3.8.7
+PY2=2.7.18
+PY_DEFAULT=default-dev-$PY3
+PY_DEFAULT_EXE=$PYENV_ROOT/versions/$PY_DEFAULT/bin/python
+
+echo Upgrading pyenv brew formula to get latest list of python versions..
+brew upgrade pyenv
+
+echo Installing python $PY3 if not exists ...
+pyenv install -s $PY3
+
+echo Installing python $PY2 if not exists...
+pyenv install -s $PY2
+
+echo Creating default python virtualenv $PY_DEFAULT if not exists..
+if [[ ! $(command -v $PY_DEFAULT_EXE) ]]; then
+    pyenv virtualenv $PY3 $PY_DEFAULT
+fi
+
+echo Setting global python versions
+pyenv global $PY3 $PY_DEFAULT $PY2
+
+echo Install dev packages in virtualenv $PY_DEFAULT
+
+$PY_DEFAULT_EXE -m pip install --upgrade pip
+$PY_DEFAULT_EXE -m pip install -r python/dev-requirements.txt
+
+echo Installing pipenv inside pipx ...
+pipx install pipenv

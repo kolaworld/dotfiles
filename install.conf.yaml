@@ -14,6 +14,12 @@
    ~/.zshrc:
     path: zsh/zshrc
     force: true
+   ~/.config/flake8:
+    path: python/flake8
+    force: true
+   ~/.config/pyproject.toml:
+    path: python/pyproject.toml
+    force: true
 
 - create:
   - ~/.vim/tmp/backup
@@ -24,7 +30,8 @@
   - [setup_scripts/setup_brew, Install brew and brew formulas/casks if not exist]
   - [setup_scripts/setup_gcloud, Install or update gcloud]
   - [setup_scripts/setup_ohmyzsh, Install ohmyzsh if it doesn't exist]
+  - [setup_scripts/setup_python, Setup python dev environment]
   - [git submodule sync --recursive, Syncing submodule remote urls]
   - [git submodule update --init --recursive, Installing submodules]
   - [yarn --cwd ~/.vim/pack/vendor/start/markdown-preview/app install, Yarn install markdown-preview vim plugin]
-  - [cd ~/.vim/pack/vendor/start/YouCompleteMe && python install.py --all, Install YouCompleteMe]
+  - [cd ~/.vim/pack/vendor/start/YouCompleteMe && /usr/local/bin/python3 install.py --all, Install YouCompleteMe]
