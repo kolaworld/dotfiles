@@ -30,6 +30,7 @@ brew_forms=(
     "git"
     "grep"
     "node"
+    "pipx"
     "pyenv"
     "pyenv-virtualenv"
     "rbenv"
