@@ -55,12 +55,13 @@ brew_casks=(
     "iterm2"
     "postgres"
     "postico"
+    "rectangle"
 )
 
 for brew_cask in "${brew_casks[@]}"
 do
     if [[ ! $brew_casks_installed =~ $brew_cask ]]; then
         echo brew cask $brew_cask not installed, installing it..
-        brew cask install $brew_cask
+        brew install --cask $brew_cask
     fi
 done
