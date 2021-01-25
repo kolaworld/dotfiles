@@ -20,6 +20,9 @@
    ~/.config/pyproject.toml:
     path: python/pyproject.toml
     force: true
+   ~/.config/mypy/config/mypy.ini:
+    path: python/mypy.ini
+    force: true
 
 - create:
   - ~/.vim/tmp/backup
