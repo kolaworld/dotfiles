@@ -146,6 +146,8 @@ fi
 # Homebrew
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
 
+# Postgres.app
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 
