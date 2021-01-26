@@ -172,6 +172,7 @@ export PIPENV_DEFAULT_PYTHON_VERSION=$(pyenv which python)
 
 # autoenv
 source $(which activate.sh)
+export AUTOENV_ENABLE_LEAVE="y"
 
 # rbenv
 eval "$(rbenv init -)"
