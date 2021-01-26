@@ -165,6 +165,7 @@ eval "$(/usr/local/bin/register-python-argcomplete pipx)"
 
 # pipenv
 export PIPENV_VENV_IN_PROJECT=1
+export PIPENV_DONT_LOAD_ENV=1 # autoenv handles this
 export PIPENV_DEFAULT_PYTHON_VERSION=$(pyenv which python)
 
 # autoenv
