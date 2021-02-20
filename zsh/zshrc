@@ -99,14 +99,23 @@ bindkey -M vicmd 'j' history-substring-search-down
 #}
 
 # https://unix.stackexchange.com/a/565255
-oldPS1="$PS1"
+# left aligned
+#oldPS1="$PS1"
+#function zle-line-init zle-keymap-select {
+#    VIM_NORMAL_PROMPT="%{$fg_bold[yellow]%} [% NOR]%  %{$reset_color%}"
+#    VIM_INSERT_PROMPT="%{$fg_bold[green]%} [% INS]%  %{$reset_color%}"
+#    PS1="${${KEYMAP/vicmd/$VIM_NORMAL_PROMPT}/(main|viins)/$VIM_INSERT_PROMPT}$oldPS1"
+#    PS2=$PS1
+#    RPS1=""
+#    RPS2=""
+#    zle reset-prompt
+#}
+
+# right aligned
 function zle-line-init zle-keymap-select {
     VIM_NORMAL_PROMPT="%{$fg_bold[yellow]%} [% NOR]%  %{$reset_color%}"
     VIM_INSERT_PROMPT="%{$fg_bold[green]%} [% INS]%  %{$reset_color%}"
-    PS1="${${KEYMAP/vicmd/$VIM_NORMAL_PROMPT}/(main|viins)/$VIM_INSERT_PROMPT}$oldPS1"
-    PS2=$PS1
-    RPS1=""
-    RPS2=""
+    RPS1="${${KEYMAP/vicmd/$VIM_NORMAL_PROMPT}/(main|viins)/$VIM_INSERT_PROMPT}$EPS1"
     zle reset-prompt
 }
 
@@ -137,6 +146,8 @@ fi
 # Homebrew
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
 
+# Postgres.app
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 
@@ -156,7 +167,12 @@ eval "$(/usr/local/bin/register-python-argcomplete pipx)"
 
 # pipenv
 export PIPENV_VENV_IN_PROJECT=1
+export PIPENV_DONT_LOAD_ENV=1 # autoenv handles this
 export PIPENV_DEFAULT_PYTHON_VERSION=$(pyenv which python)
+
+# autoenv
+source $(which activate.sh)
+export AUTOENV_ENABLE_LEAVE="y"
 
 # rbenv
 eval "$(rbenv init -)"

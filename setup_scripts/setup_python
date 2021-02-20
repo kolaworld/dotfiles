@@ -42,3 +42,4 @@ $PY_DEFAULT_EXE -m pip install -r python/dev-requirements.txt
 
 echo Installing pipenv inside pipx ...
 pipx install pipenv
+pipx install autoenv
