@@ -28,6 +28,7 @@ brew_forms=(
     "cmake"
     "coreutils"
     "git"
+    "go"
     "grep"
     "node"
     "pipx"
