@@ -28,6 +28,9 @@
   - ~/.vim/tmp/backup
   - ~/.vim/tmp/swap
   - ~/.vim/tmp/undo
+  - ~/go/bin
+  - ~/go/src
+  - ~/go/pkg
 
 - shell:
   - [setup_scripts/setup_brew, Install brew and brew formulas/casks if not exist]
