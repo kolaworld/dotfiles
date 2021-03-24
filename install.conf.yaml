@@ -14,6 +14,9 @@
    ~/.zshrc:
     path: zsh/zshrc
     force: true
+   ~/.p10k.zsh:
+    path: zsh/p10k.zsh
+    force: true
    ~/.config/flake8:
     path: python/.flake8
     force: true
@@ -28,9 +31,9 @@
   - ~/.vim/tmp/backup
   - ~/.vim/tmp/swap
   - ~/.vim/tmp/undo
-  - ~/go/bin
-  - ~/go/src
-  - ~/go/pkg
+  - ~/code/go/bin
+  - ~/code/go/src
+  - ~/code/go/pkg
 
 - shell:
   - [setup_scripts/setup_brew, Install brew and brew formulas/casks if not exist]
@@ -40,4 +43,3 @@
   - [git submodule sync --recursive, Syncing submodule remote urls]
   - [git submodule update --init --recursive, Installing submodules]
   - [yarn --cwd ~/.vim/pack/vendor/start/markdown-preview/app install, Yarn install markdown-preview vim plugin]
-  - [cd ~/.vim/pack/vendor/start/YouCompleteMe && /usr/local/bin/python3 install.py --all, Install YouCompleteMe]
