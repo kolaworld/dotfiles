@@ -124,9 +124,8 @@ export PIPENV_VENV_IN_PROJECT=1
 export PIPENV_DONT_LOAD_ENV=1 # autoenv handles this
 export PIPENV_DEFAULT_PYTHON_VERSION=$(pyenv which python)
 
-# autoenv
-source $(which activate.sh)
-export AUTOENV_ENABLE_LEAVE="y"
+# direnv
+eval "$(direnv hook zsh)"
 
 # rbenv
 eval "$(rbenv init -)"
