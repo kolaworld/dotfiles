@@ -54,11 +54,14 @@ done
 brew_casks_installed=$(brew list --cask)
 brew_casks=(
     "alfred"
+    "authy"
     "brave-browser"
+    "cheatsheet"
     "docker"
     "docker-compose"
     "goland"
     "iterm2"
+    "lastpass"
     "linear"
     "notion"
     "postgres"
@@ -66,7 +69,10 @@ brew_casks=(
     "postman"
     "pycharm-ce"
     "rectangle"
+    "signal"
     "slack"
+    "spotify"
+    "zoom"
 )
 
 for brew_cask in "${brew_casks[@]}"
