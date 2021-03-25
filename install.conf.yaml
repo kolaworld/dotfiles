@@ -37,12 +37,12 @@
 
 - shell:
   - 
-    command: setup_scripts/setup_brew
+    command: setup_scripts/brew_setup
     stdin: true
     description: Install Homebrew and brew formulas and casks if not exist.
-  - [setup_scripts/setup_gcloud, Install or update gcloud]
-  - [setup_scripts/setup_ohmyzsh, Install ohmyzsh if it doesn't exist]
-  - [setup_scripts/setup_python, Setup python dev environment]
+  - [setup_scripts/gcloud_setup, Install or update gcloud]
+  - [setup_scripts/ohmyzsh_setup, Install ohmyzsh if it doesn't exist]
+  - [setup_scripts/python_setup, Setup python dev environment]
   - [git submodule sync --recursive, Syncing submodule remote urls]
   - [git submodule update --init --recursive, Installing submodules]
   - [yarn --cwd ~/.vim/pack/vendor/start/markdown-preview/app install, Yarn install markdown-preview vim plugin]
