@@ -174,10 +174,6 @@ let g:terraform_fmt_on_save=1
 "==============================
 
 "==============================
-" CONQUER OF COMPLETION - CODE AUTOCOMPLETION
-"==============================
-
-"==============================
 " python-syntax
 "==============================
 let g:python_highlight_all = 1
