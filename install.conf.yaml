@@ -36,7 +36,10 @@
   - ~/code/go/pkg
 
 - shell:
-  - [setup_scripts/setup_brew, Install brew and brew formulas/casks if not exist]
+  - 
+    command: setup_scripts/setup_brew
+    stdin: true
+    description: Install Homebrew and brew formulas and casks if not exist.
   - [setup_scripts/setup_gcloud, Install or update gcloud]
   - [setup_scripts/setup_ohmyzsh, Install ohmyzsh if it doesn't exist]
   - [setup_scripts/setup_python, Setup python dev environment]
