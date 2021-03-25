@@ -2,6 +2,7 @@
    link:
      relink: true
      create: true
+     force: true
    shell:
      stdout: true
      stderr: true
@@ -11,21 +12,13 @@
 
 - link:
    ~/.vim: vim
-   ~/.zshrc:
-    path: zsh/zshrc
-    force: true
-   ~/.p10k.zsh:
-    path: zsh/p10k.zsh
-    force: true
-   ~/.config/flake8:
-    path: python/.flake8
-    force: true
-   ~/.config/pyproject.toml:
-    path: python/pyproject.toml
-    force: true
-   ~/.config/mypy/config/mypy.ini:
-    path: python/mypy.ini
-    force: true
+   ~/.zshrc: zsh/zshrc
+   ~/.p10k.zsh: zsh/p10k.zsh
+   ~/.config/flake8: python/.flake8
+   ~/.config/pyproject.toml: python/pyproject.toml
+   ~/.config/mypy/config/mypy.ini: python/mypy.ini
+   ~/.gitconfig: git/gitconfig
+   ~/.gitignore_global: git/gitignore_global
 
 - create:
   - ~/.vim/tmp/backup
@@ -36,7 +29,7 @@
   - ~/code/go/pkg
 
 - shell:
-  - 
+  -
     command: setup_scripts/brew_setup
     stdin: true
     description: Install Homebrew and brew formulas and casks if not exist.
