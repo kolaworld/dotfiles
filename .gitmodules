@@ -86,3 +86,7 @@
 	path = vim/pack/vendor/start/coc
 	url = https://github.com/neoclide/coc.nvim
 	ignore = dirty
+[submodule "vim/pack/vendor/start/vim-jsonc"]
+	path = vim/pack/vendor/start/vim-jsonc
+	url = https://github.com/kevinoid/vim-jsonc.git
+	ignore = dirty
