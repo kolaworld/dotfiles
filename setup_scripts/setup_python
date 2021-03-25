@@ -13,6 +13,7 @@ if [[ ! $(command -v pyenv) || ! $(command -v pyenv-virtualenv) || ! $(command -
     exit 1
 fi
 
+PYENV_ROOT=$HOME/.pyenv
 PY3=3.8.7
 PY2=2.7.18
 PY_DEFAULT=default-dev-$PY3
