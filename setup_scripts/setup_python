@@ -40,5 +40,8 @@ echo Install dev packages in virtualenv $PY_DEFAULT
 $PY_DEFAULT_EXE -m pip install --upgrade pip
 $PY_DEFAULT_EXE -m pip install -r python/dev-requirements.txt
 
-echo Installing pipenv inside pipx ...
-pipx install pipenv
+
+if [[ ! $(command -v pipenv) ]]; then
+    echo Installing pipenv inside pipx ...
+    pipx install pipenv
+fi

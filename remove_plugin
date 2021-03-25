@@ -37,7 +37,13 @@ else
     exit 1
 fi
 
-git submodule deinit -f -- $PLUGIN_PATH \
+
+echo Deinitializing submodule at path $PLUGIN_PATH to remove entry from .git/config \
+    && git submodule deinit -f -- $PLUGIN_PATH \
+    && echo $'\n'Removing $PLUGIN_PATH directory inside .git/modules \
     && rm -rf .git/modules/$PLUGIN_PATH \
+    && echo Remove the entry in .gitmodules and remove the submodule directory located at $PLUGIN_PATH \
     && git rm -f $PLUGIN_PATH \
+    && echo Staging changes in .gitmodules \
+    && git add .gitmodules \
     && echo Sucessfully removed $1 plugin \"$2\"
