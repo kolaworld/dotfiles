@@ -29,7 +29,8 @@ mkdir -p $PLUGIN_PATH
 echo Adding $1 plugin \"$plugname\" as a git submodule at path \"$PLUGIN_PATH\"
 
 git submodule add $3 $PLUGIN_PATH/$plugname \
-    && git config -f .gitmodules submodule.$PLUGIN_PATH/$plugname.ignore dirty
+    && git config -f .gitmodules submodule.$PLUGIN_PATH/$plugname.ignore dirty \
+    && git add .gitmodules
 
 if [[ $1 == "vim" ]]; then
     echo Generating help tags for $1 plugin \"$plugname\"
