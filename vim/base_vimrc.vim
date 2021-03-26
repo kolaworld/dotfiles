@@ -1,0 +1,233 @@
+"==============================
+" DEFAULTS
+"==============================
+set nocompatible " use Vim settings, rather than Vi settings
+filetype plugin indent on
+set history=2000 " keep x lines of command line history
+set timeout	" time out for and mappings key codes
+set ttimeoutlen=100	" wait up to 100ms after Esc for special key
+set nrformats-=octal " Do not recognize octal numbers for Ctrl-A and Ctrl-X
+set mouse+=a " enable mouse mode (scrolling, selection, etc)
+set backup " Save backup files
+set backupdir=~/.vim/tmp/backup//,.
+set swapfile " Save swap files
+set directory=~/.vim/tmp/swap//,.
+set undofile " Save undo files
+set undodir=~/.vim/tmp/undo//,.
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=100
+"==============================
+" NO OPERATION
+"==============================
+" 'Q' in normal mode enters Ex mode.
+nmap Q <Nop>
+" remap leader to space
+nnoremap <SPACE> <Nop>
+let mapleader = ' '
+
+"==============================
+" DISPLAY | COLOR
+"==============================
+colorscheme codedark
+syntax on
+set showcmd	" display incomplete commands
+set scrolloff=5 " Show a few lines of context around the cursor.
+set number " Show line numbers.
+set laststatus=2 " Always show the status line at the bottom.
+ 
+set cursorline " Highlight the current line
+set splitbelow " open new split panes to right and bottom
+set signcolumn=yes " always show sign colum for gitgutter and coc
+set splitright
+augroup vimStartup
+  au!
+  " When editing a file, always jump to the last known cursor position.
+  autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+    \ |   exe "normal! g`\""
+    \ | endif
+augroup END
+
+
+"==============================
+" SEARCH
+"==============================
+set ignorecase " search case insensitive until first capital
+set smartcase
+set incsearch " do incremental search
+set hlsearch "highlight search
+command C let @/="" " Clear search
+set wildmenu " Display all matching files when tab complete
+set wildmode=longest:list,full "Complete longest common, then list, then tab complete list.
+
+"==============================
+" EDITING
+"==============================
+packadd! editexisting
+set hidden " allow auto-hiding of edited buffers
+set autoindent " Enable auto indentation
+set tabstop=4 " number of visual spaces per TAB in file
+set softtabstop=4 " number of spaces per TAB when editing
+set shiftwidth=4 " insert x spaces on TAB
+set expandtab " replace tabs with white spaces
+
+set backspace=indent,eol,start " backspace over everything in insert mode.
+
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+" Revert with ":iunmap <C-U>".
+inoremap <C-U> <C-G>u<C-U>
+
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made.
+" Only define it when not defined already.
+" Revert with: ":delcommand DiffOrig".
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r ++edit | wincmd p | diffthis
+endif
+
+" Copy / paste from clipboard
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+
+"==============================
+" MOVEMENT
+"==============================
+
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+
+" quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" TODO: Replace with hardmode https://github.com/wikitopian/hardmode/blob/master/plugin/hardmode.vim
+nnoremap <Left>  :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up>    :echoe "Use k"<CR>
+nnoremap <Down>  :echoe "Use j"<CR>
+" ...and in insert mode
+inoremap <Left>  <ESC>:echoe "Use h"<CR>
+inoremap <Right> <ESC>:echoe "Use l"<CR>
+inoremap <Up>    <ESC>:echoe "Use k"<CR>
+inoremap <Down>  <ESC>:echoe "Use j"<CR>
+
+"==============================
+" CURSOR
+"==============================
+"  1 -> blinking block
+"  2 -> solid block
+"  3 -> blinking underscore
+"  4 -> solid underscore
+"  5 -> blinking vertical bar
+"  6 -> solid vertical bar
+
+"SI = INSERT mode
+"SR = REPLACE mode
+"EI = NORMAL mode (ELSE)
+
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[4 q"
+
+"==============================
+" PLUGINS
+"==============================
+
+
+"==============================
+" ENDWISE
+"==============================
+
+" disable mapping to not break coc.nvim if you map <CR> there.
+"let g:endwise_no_mappings = 1
+
+"==============================
+" CONQUER OF COMPLETION
+"==============================
+
+let g:coc_global_extensions = ['coc-json']
+
+" Use <CR> to confirm completition when popup is open
+"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use <Tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+" Use <S-Tab> to navigate back up the completion list:
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+inoremap <silent><expr> <c-space> coc#refresh()
+
+"==============================
+" VIM-AIRLINE - STATUS LINE
+"==============================
+" let g:airline_theme='molokai'
+let g:airline_theme='codedark'
+let g:airline#extensions#virtualenv#enabled = 1
+
+"==============================
+" MARKDOWN
+"==============================
+nmap <leader>om <Plug>MarkdownPreview
+nmap <leader>cm <Plug>MarkdownPreviewStop
+
+nmap <leader>tocgh :GenTocGFM<CR>
+nmap <leader>tocgl :GenTocGitLab<CR>
+nmap <leader>rmtoc :RemoveToc<CR>
+
+augroup markdownSpell
+  au!
+  autocmd FileType markdown setlocal spell spelllang=en_us
+augroup END
+
+"==============================
+" TERRAFORM
+"==============================
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
+
+"==============================
+" CTRLP - FUZZY FILE FINDER
+"==============================
+
+"==============================
+" PLUGINS - PYTHON
+"==============================
+
+"==============================
+" python-syntax
+"==============================
+let g:python_highlight_all = 1
+
+"==============================
+" SimplyFold
+"==============================
+let g:SimpylFold_docstring_preview = 1
+
+"==============================
+" ALE
+"==============================
+let g:airline#extensions#ale#enabled = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 0
+let g:ale_linters_explicit = 1
+let g:ale_fixers = {
+    \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+    \}
+" coc plugin handles lsp. See for more: https://github.com/dense-analysis/ale#5iii-how-can-i-use-ale-and-cocnvim-together
+let g:ale_disable_lsp = 1
