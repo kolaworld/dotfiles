@@ -12,6 +12,7 @@
 
 - link:
    ~/.vim: vim
+   ~/.ideavimrc: ideavim/ideavimrc
    ~/.zshrc: zsh/zshrc
    ~/.p10k.zsh: zsh/p10k.zsh
    ~/.config/flake8: python/.flake8
