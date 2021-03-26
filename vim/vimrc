@@ -1,5 +1,3 @@
-" FOR VIM 8.2+ DOWNLOADED FROM Homebrew
-
 "==============================
 " DEFAULTS
 "==============================
@@ -35,10 +33,10 @@ set showcmd	" display incomplete commands
 set scrolloff=5 " Show a few lines of context around the cursor.
 set number " Show line numbers.
 set laststatus=2 " Always show the status line at the bottom.
-
+" 
 set cursorline " Highlight the current line
 set splitbelow " open new split panes to right and bottom
-
+set signcolumn=yes " always show sign colum for gitgutter and coc
 set splitright
 augroup vimStartup
   au!
@@ -137,6 +135,39 @@ let &t_EI = "\<Esc>[4 q"
 " PLUGINS
 "==============================
 
+
+"==============================
+" ENDWISE
+"==============================
+
+" disable mapping to not break coc.nvim if you map <CR> there.
+"let g:endwise_no_mappings = 1
+
+"==============================
+" CONQUER OF COMPLETION
+"==============================
+
+let g:coc_global_extensions = ['coc-json']
+
+" Use <CR> to confirm completition when popup is open
+"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use <Tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+" Use <S-Tab> to navigate back up the completion list:
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+inoremap <silent><expr> <c-space> coc#refresh()
+
 "==============================
 " VIM-AIRLINE - STATUS LINE
 "==============================
@@ -184,7 +215,7 @@ let g:python_highlight_all = 1
 let g:SimpylFold_docstring_preview = 1
 
 "==============================
-" ale
+" ALE
 "==============================
 let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_text_changed = 'never'
@@ -195,3 +226,5 @@ let g:ale_linters_explicit = 1
 let g:ale_fixers = {
     \   '*': ['remove_trailing_lines', 'trim_whitespace'],
     \}
+" coc plugin handles lsp. See for more: https://github.com/dense-analysis/ale#5iii-how-can-i-use-ale-and-cocnvim-together
+let g:ale_disable_lsp = 1
