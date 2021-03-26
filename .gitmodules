@@ -54,10 +54,6 @@
 	path = vim/pack/vendor/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
 	ignore = dirty
-[submodule "vim/pack/vendor/start/YouCompleteMe"]
-	path = vim/pack/vendor/start/YouCompleteMe
-	url = https://github.com/ycm-core/YouCompleteMe.git
-	ignore = dirty
 [submodule "vim/pack/vendor/start/python-syntax"]
 	path = vim/pack/vendor/start/python-syntax
 	url = https://github.com/vim-python/python-syntax
@@ -81,4 +77,20 @@
 [submodule "zsh/oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
 	path = zsh/oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+	ignore = dirty
+[submodule "zsh/oh-my-zsh/custom/themes/powerlevel10k"]
+	path = zsh/oh-my-zsh/custom/themes/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git
+	ignore = dirty
+[submodule "vim/pack/vendor/start/coc"]
+	path = vim/pack/vendor/start/coc
+	url = https://github.com/neoclide/coc.nvim
+	ignore = dirty
+[submodule "vim/pack/vendor/start/vim-jsonc"]
+	path = vim/pack/vendor/start/vim-jsonc
+	url = https://github.com/kevinoid/vim-jsonc.git
+	ignore = dirty
+[submodule "vim/pack/vendor/start/vim-gitgutter"]
+	path = vim/pack/vendor/start/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter
 	ignore = dirty

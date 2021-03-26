@@ -25,17 +25,16 @@ fi
 brew_forms_installed=$(brew list --formula)
 brew_forms=(
     "autojump"
-    "cmake"
+    "blackbox"
     "coreutils"
+    "direnv"
     "git"
     "go"
-    "grep"
     "node"
     "pipx"
     "pyenv"
     "pyenv-virtualenv"
     "rbenv"
-    "rsync"
     "tfenv"
     "tree"
     "vim"
@@ -53,10 +52,25 @@ done
 
 brew_casks_installed=$(brew list --cask)
 brew_casks=(
+    "alfred"
+    "authy"
+    "brave-browser"
+    "cheatsheet"
+    "docker"
+    "goland"
     "iterm2"
+    "lastpass"
+    "linear"
+    "notion"
     "postgres"
     "postico"
+    "postman"
+    "pycharm-ce"
     "rectangle"
+    "signal"
+    "slack"
+    "spotify"
+    "zoom"
 )
 
 for brew_cask in "${brew_casks[@]}"
