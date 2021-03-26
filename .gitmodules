@@ -94,3 +94,7 @@
 	path = vim/pack/vendor/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
 	ignore = dirty
+[submodule "vim/pack/vendor/start/fzf"]
+	path = vim/pack/vendor/start/fzf
+	url = https://github.com/junegunn/fzf.vim
+	ignore = dirty
