@@ -1,0 +1,22 @@
+"==============================
+" DEFAULTS
+"==============================
+source ~/.vim/base_vimrc.vim
+
+
+"==============================
+" PLUGINS
+"==============================
+
+"==============================
+" vim-surround
+"==============================
+set surround
+
+
+"==============================
+" IDEA ONLY SETTINGS
+"==============================
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep

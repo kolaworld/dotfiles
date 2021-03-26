@@ -12,6 +12,7 @@
 
 - link:
    ~/.vim: vim
+   ~/.ideavimrc: ideavim/ideavimrc
    ~/.zshrc: zsh/zshrc
    ~/.p10k.zsh: zsh/p10k.zsh
    ~/.config/flake8: python/.flake8
@@ -19,6 +20,7 @@
    ~/.config/mypy/config/mypy.ini: python/mypy.ini
    ~/.gitconfig: git/gitconfig
    ~/.gitignore_global: git/gitignore_global
+   ~/.config/karabiner: karabiner
 
 - create:
   - ~/.vim/tmp/backup
