@@ -90,3 +90,7 @@
 	path = vim/pack/vendor/start/vim-jsonc
 	url = https://github.com/kevinoid/vim-jsonc.git
 	ignore = dirty
+[submodule "vim/pack/vendor/start/vim-gitgutter"]
+	path = vim/pack/vendor/start/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter
+	ignore = dirty
