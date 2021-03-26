@@ -28,6 +28,7 @@ brew_forms=(
     "blackbox"
     "coreutils"
     "direnv"
+    "fzf"
     "git"
     "go"
     "node"
@@ -36,6 +37,7 @@ brew_forms=(
     "pyenv-virtualenv"
     "rbenv"
     "tfenv"
+    "the_silver_searcher"
     "tree"
     "vim"
     "yarn"
@@ -47,7 +49,12 @@ do
     if [[ ! $brew_forms_installed =~ $brew_form ]]; then
         echo brew formula $brew_form not installed, installing it..
         brew install $brew_form
+
+        if [[ $brew_form == "fzf" ]]; then
+            $(brew --prefix)/opt/fzf/install
+        fi
     fi
+
 done
 
 brew_casks_installed=$(brew list --cask)

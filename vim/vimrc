@@ -97,8 +97,9 @@ let g:terraform_align=1
 let g:terraform_fmt_on_save=1
 
 "==============================
-" CTRLP - FUZZY FILE FINDER
+" fzf - FUZZY FILE FINDER
 "==============================
+set rtp+=/usr/local/opt/fzf
 
 "==============================
 " PLUGINS - PYTHON
