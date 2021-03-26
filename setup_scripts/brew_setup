@@ -59,6 +59,7 @@ brew_casks=(
     "docker"
     "goland"
     "iterm2"
+    "karabiner-elements"
     "lastpass"
     "linear"
     "notion"
