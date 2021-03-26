@@ -19,6 +19,7 @@
    ~/.config/mypy/config/mypy.ini: python/mypy.ini
    ~/.gitconfig: git/gitconfig
    ~/.gitignore_global: git/gitignore_global
+   ~/.config/karabiner: karabiner
 
 - create:
   - ~/.vim/tmp/backup
