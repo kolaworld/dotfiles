@@ -46,10 +46,6 @@
 	path = vim/pack/vendor/start/vim-json
 	url = https://github.com/elzr/vim-json.git
 	ignore = dirty
-[submodule "vim/pack/vendor/start/ctrlp.vim"]
-	path = vim/pack/vendor/start/ctrlp.vim
-	url = https://github.com/ctrlpvim/ctrlp.vim.git
-	ignore = dirty
 [submodule "vim/pack/vendor/start/vim-fugitive"]
 	path = vim/pack/vendor/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
@@ -93,4 +89,16 @@
 [submodule "vim/pack/vendor/start/vim-gitgutter"]
 	path = vim/pack/vendor/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
+	ignore = dirty
+[submodule "vim/pack/vendor/start/fzf"]
+	path = vim/pack/vendor/start/fzf
+	url = https://github.com/junegunn/fzf.vim
+	ignore = dirty
+[submodule "zsh/oh-my-zsh/custom/plugins/zsh-completions"]
+	path = zsh/oh-my-zsh/custom/plugins/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions
+	ignore = dirty
+[submodule "zsh/oh-my-zsh/custom/plugins/fzf-tab"]
+	path = zsh/oh-my-zsh/custom/plugins/fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab
 	ignore = dirty
