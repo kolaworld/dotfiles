@@ -36,12 +36,12 @@ set showcmd	" display incomplete commands
 set scrolloff=5 " Show a few lines of context around the cursor.
 set number " Show line numbers.
 set laststatus=2 " Always show the status line at the bottom.
- 
 set cursorline " Highlight the current line
 set splitbelow " open new split panes to right and bottom
 set signcolumn=yes " always show sign colum for gitgutter and coc
 set splitright
-
+" disable audible bell
+set noerrorbells visualbell t_vb=
 "==============================
 " SEARCH
 "==============================
