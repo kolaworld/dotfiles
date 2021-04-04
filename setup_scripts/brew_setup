@@ -69,7 +69,6 @@ brew_casks=(
     "iterm2"
     "karabiner-elements"
     "lastpass"
-    "linear"
     "notion"
     "postgres"
     "postico"
