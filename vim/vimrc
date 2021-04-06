@@ -81,6 +81,9 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 inoremap <silent><expr> <c-space> coc#refresh()
 
+" auto-format code and organize imports on save
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+
 "==============================
 " VIM-AIRLINE - STATUS LINE
 "==============================
