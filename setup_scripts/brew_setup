@@ -65,6 +65,7 @@ brew_casks=(
     "brave-browser"
     "cheatsheet"
     "docker"
+    "expressvpn"
     "goland"
     "iterm2"
     "karabiner-elements"
