@@ -43,9 +43,6 @@ HYPHEN_INSENSITIVE="true"
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
-# Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM="$HOME/code/dotfiles/zsh/oh-my-zsh/custom"
-
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     golang
@@ -85,6 +82,9 @@ export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
 
 # Postgres.app
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+
+# scipy
+export OPENBLAS="$(brew --prefix openblas)"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
