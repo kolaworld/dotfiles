@@ -21,10 +21,12 @@
    ~/.gitconfig: git/gitconfig
    ~/.gitignore_global: git/gitignore_global
    ~/.config/karabiner: karabiner
-   ~/.oh-my-zsh/custom:
-     path: zsh/oh-my-zsh/custom
+   ~/.oh-my-zsh/custom/plugins:
+     path: zsh/oh-my-zsh/custom/plugins
      create: false
-
+   ~/.oh-my-zsh/custom/themes:
+     path: zsh/oh-my-zsh/custom/themes
+     create: false
 
 - create:
   - ~/.vim/tmp/backup
