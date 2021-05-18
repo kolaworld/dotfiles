@@ -79,7 +79,14 @@ inoremap <silent><expr> <Tab>
 " Use <S-Tab> to navigate back up the completion list:
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+" use <c-space> to trigger completion
 inoremap <silent><expr> <c-space> coc#refresh()
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " auto-format code and organize imports on save
 autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
@@ -164,6 +171,13 @@ let g:ale_fixers = {
 " coc plugin handles lsp. See for more: https://github.com/dense-analysis/ale#5iii-how-can-i-use-ale-and-cocnvim-together
 let g:ale_disable_lsp = 1
 
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
+
+" move cursor to next/prev lint error
+nmap <silent> <leader>e :ALENextWrap<CR>
+nmap <silent> <leader>E :ALEPreviousWrap<CR>
+nmap <silent> <leader>fmt :ALEFix<CR>
 "==============================
 " vim-hardtime
 "==============================
