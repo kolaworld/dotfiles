@@ -106,3 +106,7 @@
 	path = vim/pack/vendor/start/nerdtree
 	url = https://github.com/preservim/nerdtree.git
 	ignore = dirty
+[submodule "vim/pack/vendor/start/vim-hardtime"]
+	path = vim/pack/vendor/start/vim-hardtime
+	url = https://github.com/takac/vim-hardtime.git
+	ignore = dirty

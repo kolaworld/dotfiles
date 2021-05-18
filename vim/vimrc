@@ -97,9 +97,9 @@ let g:airline#extensions#virtualenv#enabled = 1
 nmap <leader>om <Plug>MarkdownPreview
 nmap <leader>cm <Plug>MarkdownPreviewStop
 
-nmap <leader>tocgh :GenTocGFM<CR>
-nmap <leader>tocgl :GenTocGitLab<CR>
-nmap <leader>rmtoc :RemoveToc<CR>
+nmap <leader>tc :GenTocGFM<CR>
+nmap <leader>tcgl :GenTocGitLab<CR>
+nmap <leader>rtc :RemoveToc<CR>
 
 augroup markdownSpell
   au!
@@ -163,3 +163,9 @@ let g:ale_fixers = {
     \}
 " coc plugin handles lsp. See for more: https://github.com/dense-analysis/ale#5iii-how-can-i-use-ale-and-cocnvim-together
 let g:ale_disable_lsp = 1
+
+"==============================
+" vim-hardtime
+"==============================
+let g:hardtime_default_on = 1
+let g:hardtime_showmsg = 1
