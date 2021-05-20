@@ -5,9 +5,6 @@
 "==============================
 " ale
 "==============================
-" Check go files with gofmt and golint.
-let b:ale_linters = ['gofmt', 'golint', 'go vet']
-" Fix go files
-let b:ale_fixers = ['gofmt', 'golint', 'go vet']
-
-let b:ale_go_gofmt_options = 'goimports'
+let b:ale_linters = ['golangci-lint', 'go vet']
+let b:ale_fixers = ['goimports']
+let b:ale_go_golangci_lint_options = "-enable=bodyclose,exhaustive,rowserrcheck --disable=errcheck"
