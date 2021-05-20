@@ -49,6 +49,9 @@ autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
 
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 "==============================
 " ENDWISE
 "==============================
@@ -97,6 +100,27 @@ autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeIm
 " let g:airline_theme='molokai'
 let g:airline_theme='codedark'
 let g:airline#extensions#virtualenv#enabled = 1
+let g:airline#extensions#hunks#enabled = 0
+let g:airline_mode_map = {
+    \ '__'     : '-',
+    \ 'c'      : 'C',
+    \ 'i'      : 'I',
+    \ 'ic'     : 'I',
+    \ 'ix'     : 'I',
+    \ 'n'      : 'N',
+    \ 'multi'  : 'M',
+    \ 'ni'     : 'N',
+    \ 'no'     : 'N',
+    \ 'R'      : 'R',
+    \ 'Rv'     : 'R',
+    \ 's'      : 'S',
+    \ 'S'      : 'S',
+    \ ''     : 'S',
+    \ 't'      : 'T',
+    \ 'v'      : 'V',
+    \ 'V'      : 'V',
+    \ ''     : 'V',
+    \ }
 
 "==============================
 " MARKDOWN
@@ -125,10 +149,14 @@ let g:terraform_fmt_on_save=1
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 set rtp+=/usr/local/opt/fzf
 
-" settings from: https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
+" settings from: https://github.com/BurntSushi/ripgrep/issues/1119#issuecomment-516116025
+" Make Ripgrep ONLY search file contents and not filenames
 command! -bang -nargs=* Rg
-            \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>),
-            \ 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --hidden --smart-case --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4.. -e'}, 'right:50%:hidden', '?'),
+  \   <bang>0)
 
 nnoremap <silent> <C-f> :Files<CR>
 nnoremap <silent> <leader>f :Rg<CR>
@@ -163,7 +191,7 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 0
+let g:ale_fix_on_save = 1
 let g:ale_linters_explicit = 1
 let g:ale_fixers = {
     \   '*': ['remove_trailing_lines', 'trim_whitespace'],
