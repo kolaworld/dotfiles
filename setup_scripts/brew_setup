@@ -33,6 +33,7 @@ brew_forms=(
     "gcc"
     "git"
     "go"
+    "golangci-lint"
     "node"
     "openblas"
     "pipx"
