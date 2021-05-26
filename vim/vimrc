@@ -202,6 +202,8 @@ let g:ale_disable_lsp = 1
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
 
+let g:ale_go_golangci_lint_options = "--enable=bodyclose,exhaustive,rowserrcheck --disable=errcheck"
+let g:ale_go_golangci_lint_package = 1
 " move cursor to next/prev lint error
 nmap <silent> <leader>e :ALENextWrap<CR>
 nmap <silent> <leader>E :ALEPreviousWrap<CR>
