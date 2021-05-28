@@ -87,11 +87,8 @@ export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 export OPENBLAS="$(brew --prefix openblas)"
 
 # pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
 
 # pyenv-virtualenv
 eval "$(pyenv virtualenv-init -)"
@@ -131,4 +128,3 @@ if [ -f '/Users/kolaawe/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kolaawe
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/kolaawe/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kolaawe/google-cloud-sdk/completion.zsh.inc'; fi
-
