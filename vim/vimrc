@@ -216,3 +216,18 @@ let g:hardtime_showmsg = 1
 let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
 let g:hardtime_allow_different_key = 1
 " let g:hardtime_ignore_quickfix = 1
+"==============================
+" vim-easymotion
+"==============================
+" set custome leader for easymotion
+map , <Plug>(easymotion-prefix)
+
+" search 2 chars everywhere
+nmap s <Plug>(easymotion-s2)
+
+" JK motions: Line motions
+map ,j <Plug>(easymotion-j)
+map ,k <Plug>(easymotion-k)
+map ,L <Plug>(easymotion-bd-jk)
+
+let g:EasyMotion_smartcase = 1

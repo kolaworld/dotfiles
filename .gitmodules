@@ -110,3 +110,7 @@
 	path = vim/pack/vendor/start/vim-hardtime
 	url = https://github.com/takac/vim-hardtime.git
 	ignore = dirty
+[submodule "vim/pack/vendor/start/vim-easymotion"]
+	path = vim/pack/vendor/start/vim-easymotion
+	url = https://github.com/easymotion/vim-easymotion.git
+	ignore = dirty

@@ -89,7 +89,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" TODO: Replace with hardmode https://github.com/wikitopian/hardmode/blob/master/plugin/hardmode.vim
 nnoremap <Left>  :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up>    :echoe "Use k"<CR>
@@ -117,4 +116,3 @@ inoremap <Down>  <ESC>:echoe "Use j"<CR>
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[4 q"
-
