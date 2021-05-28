@@ -51,6 +51,8 @@ set smartcase
 set incsearch " do incremental search
 set hlsearch "highlight search
 command C let @/="" " Clear search
+" Also clears search
+noremap <silent> <C-_> :let @/ = ""<CR>  
 set wildmenu " Display all matching files when tab complete
 set wildmode=longest:list,full "Complete longest common, then list, then tab complete list.
 
