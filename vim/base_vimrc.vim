@@ -30,7 +30,6 @@ let mapleader = ' '
 "==============================
 " DISPLAY | COLOR
 "==============================
-colorscheme codedark
 syntax on
 set showcmd	" display incomplete commands
 set scrolloff=5 " Show a few lines of context around the cursor.
@@ -52,7 +51,7 @@ set incsearch " do incremental search
 set hlsearch "highlight search
 command C let @/="" " Clear search
 " Also clears search
-noremap <silent> <C-_> :let @/ = ""<CR>  
+noremap <silent> <C-_> :let @/ = ""<CR>
 set wildmenu " Display all matching files when tab complete
 set wildmode=longest:list,full "Complete longest common, then list, then tab complete list.
 

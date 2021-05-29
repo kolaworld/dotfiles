@@ -32,7 +32,63 @@ endif
 
 
 "==============================
-" PLUGINS
+" PLUGINS OPTS
+"==============================
+
+"==============================
+" onedark.vim
+"==============================
+packadd! onedark.vim
+if (has("termguicolors"))
+    set termguicolors
+endif
+highlight Normal ctermbg=None
+highlight LineNr ctermfg=DarkGrey
+colorscheme onedark
+
+"==============================
+" VIM-AIRLINE - STATUS LINE
+"==============================
+packadd! airline
+" onedark from onedark.vim opts plugin
+let g:airline_theme='codedark'
+" remove the filetype part
+let g:airline_section_x=''
+" remove file encoding
+let g:airline_section_y = ''
+
+"autocmd VimEnter * 
+let g:airline_section_z = airline#section#create('%p%% %#__accent_bold#%{g:airline_symbols.linenr}%l%#__restore__#%#__accent_bold#/%L')
+" remove separators for empty sections
+let g:airline_skip_empty_sections = 1
+
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#virtualenv#enabled = 1
+let g:airline#extensions#hunks#enabled = 0
+let g:airline_mode_map = {
+    \ '__'     : '-',
+    \ 'c'      : 'C',
+    \ 'i'      : 'I',
+    \ 'ic'     : 'I',
+    \ 'ix'     : 'I',
+    \ 'n'      : 'N',
+    \ 'multi'  : 'M',
+    \ 'ni'     : 'N',
+    \ 'no'     : 'N',
+    \ 'R'      : 'R',
+    \ 'Rv'     : 'R',
+    \ 's'      : 'S',
+    \ 'S'      : 'S',
+    \ ''     : 'S',
+    \ 't'      : 'T',
+    \ 'v'      : 'V',
+    \ 'V'      : 'V',
+    \ ''     : 'V',
+    \ }
+
+
+"==============================
+" PLUGINS START
 "==============================
 
 "==============================
@@ -94,33 +150,6 @@ nmap <silent> gr <Plug>(coc-references)
 " auto-format code and organize imports on save
 autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
-"==============================
-" VIM-AIRLINE - STATUS LINE
-"==============================
-" let g:airline_theme='molokai'
-let g:airline_theme='codedark'
-let g:airline#extensions#virtualenv#enabled = 1
-let g:airline#extensions#hunks#enabled = 0
-let g:airline_mode_map = {
-    \ '__'     : '-',
-    \ 'c'      : 'C',
-    \ 'i'      : 'I',
-    \ 'ic'     : 'I',
-    \ 'ix'     : 'I',
-    \ 'n'      : 'N',
-    \ 'multi'  : 'M',
-    \ 'ni'     : 'N',
-    \ 'no'     : 'N',
-    \ 'R'      : 'R',
-    \ 'Rv'     : 'R',
-    \ 's'      : 'S',
-    \ 'S'      : 'S',
-    \ ''     : 'S',
-    \ 't'      : 'T',
-    \ 'v'      : 'V',
-    \ 'V'      : 'V',
-    \ ''     : 'V',
-    \ }
 
 "==============================
 " MARKDOWN
