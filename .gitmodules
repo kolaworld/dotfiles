@@ -122,3 +122,7 @@
 	path = vim/pack/vendor/opt/vim-airline
 	url = https://github.com/vim-airline/vim-airline.git
 	ignore = dirty
+[submodule "vim/pack/vendor/start/vim-commentary"]
+	path = vim/pack/vendor/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+	ignore = dirty
