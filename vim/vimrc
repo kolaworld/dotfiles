@@ -49,20 +49,22 @@ colorscheme onedark
 "==============================
 " VIM-AIRLINE - STATUS LINE
 "==============================
-packadd! airline
+packadd! vim-airline
+let g:airline_powerline_fonts = 1
 " onedark from onedark.vim opts plugin
-let g:airline_theme='codedark'
+let g:airline_theme= 'onedark' "'codedark'
 " remove the filetype part
-let g:airline_section_x=''
+let g:airline_section_x = ''
 " remove file encoding
 let g:airline_section_y = ''
 
-"autocmd VimEnter * 
-let g:airline_section_z = airline#section#create('%p%% %#__accent_bold#%{g:airline_symbols.linenr}%l%#__restore__#%#__accent_bold#/%L')
+" default zection z: %p%% %#__accent_bold#%{g:airline_symbols.linenr}%l%#__restore__#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__#:%v
+let g:airline_section_z = airline#section#create('%#__accent_bold#%p%% | more.')
 " remove separators for empty sections
-let g:airline_skip_empty_sections = 1
+let g:airline_skip_empty_sections = 1 
 
-let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+
 let g:airline#extensions#virtualenv#enabled = 1
 let g:airline#extensions#hunks#enabled = 0
 let g:airline_mode_map = {

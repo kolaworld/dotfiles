@@ -118,3 +118,7 @@
 	path = vim/pack/vendor/opt/onedark.vim
 	url = https://github.com/joshdick/onedark.vim.git
 	ignore = dirty
+[submodule "vim/pack/vendor/opt/vim-airline"]
+	path = vim/pack/vendor/opt/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+	ignore = dirty
