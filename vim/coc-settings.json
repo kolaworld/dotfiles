@@ -3,13 +3,13 @@
     "suggest.autoTrigger": "none",
     "languageserver": {
         "golang": {
-        "command": "gopls",
-        "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-        "filetypes": ["go"],
-        "disableWorkspaceFolders": true,
-        "initializationOptions": {
-            "usePlaceholders": true
+            "command": "gopls",
+            "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+            "filetypes": ["go"],
+            "disableWorkspaceFolders": true,
+            "initializationOptions": {
+                "usePlaceholders": true
+            }
         }
     }
-  }
 }

@@ -122,7 +122,7 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 " CONQUER OF COMPLETION
 "==============================
 
-let g:coc_global_extensions = ['coc-json']
+let g:coc_global_extensions = ['coc-json', 'coc-pyright']
 
 " Use <CR> to confirm completition when popup is open
 "inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -152,6 +152,18 @@ nmap <silent> gr <Plug>(coc-references)
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
 " auto-format code and organize imports on save
 " autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 

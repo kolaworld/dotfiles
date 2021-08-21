@@ -1,4 +1,5 @@
 setlocal foldmethod=indent
+setlocal nofoldenable
 "==============================
 " PLUGINS
 "==============================
