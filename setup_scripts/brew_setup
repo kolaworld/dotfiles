@@ -31,6 +31,7 @@ brew_forms=(
     "fd"
     "fzf"
     "gcc"
+    "gh"
     "git"
     "go"
     "golangci-lint"
