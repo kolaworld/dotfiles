@@ -49,5 +49,5 @@
   - [setup_scripts/ohmyzsh_setup, Install ohmyzsh if it doesn't exist]
   - [setup_scripts/python_setup, Setup python dev environment]
   - [git submodule sync --recursive, Syncing submodule remote urls]
-  - [git submodule update --init --recursive, Installing submodules]
+  - [git submodule update --init --recursive --remote, Updating submodules]
   - [yarn --cwd ~/.vim/pack/vendor/start/markdown-preview/app install, Yarn install markdown-preview vim plugin]
