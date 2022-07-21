@@ -31,6 +31,7 @@
      path: helper_scripts/tagn
      create: false
      force: false
+   ~/.grc: grc
 
 - create:
   - ~/.vim/tmp/backup

@@ -35,6 +35,7 @@ brew_forms=(
     "git"
     "go"
     "golangci-lint"
+    "grc"
     "jq"
     "node"
     "openblas"
