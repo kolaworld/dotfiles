@@ -45,7 +45,7 @@ if (has("termguicolors"))
 endif
 highlight Normal ctermbg=None
 highlight LineNr ctermfg=DarkGrey
-colorscheme onedark
+colorscheme onedark " morning
 
 "==============================
 " VIM-AIRLINE - STATUS LINE
@@ -93,6 +93,15 @@ let g:airline_mode_map = {
 "==============================
 " PLUGINS START
 "==============================
+
+
+"==============================
+" vim-fugitive
+"==============================
+
+"rhubarb.vim plugin - enables vim-fugitive's :GBrowse to open GitHub URLs.
+nnoremap <Leader>gy :.GBrowse!<CR>
+xnoremap <Leader>gy :.GBrowse!<CR>
 
 "==============================
 " nerdtree
@@ -146,7 +155,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 " Remap keys for gotos
 nmap <silent> gd :vsp<CR><Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 " Symbol renaming.

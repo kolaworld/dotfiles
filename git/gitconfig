@@ -15,3 +15,5 @@
 	insteadOf = git@github.com:
 [url "https://"]
 	insteadOf = git://
+[checkout]
+	guess = false
