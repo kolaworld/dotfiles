@@ -11,9 +11,19 @@
 # Allow local customizations in the .gitconfig_local file
 [include]
 	path = ~/.gitconfig_local
-[url "https://github.com/"]
-	insteadOf = git@github.com:
-[url "https://"]
-	insteadOf = git://
-[checkout]
-	guess = false
+
+# only show local branches on auto-complete
+# [checkout]
+#    guess = false
+
+# Enforce https over SSH
+# [url "https://github.com/"]
+#	insteadOf = git@github.com:
+# [url "https://"]
+#	insteadOf = git://
+
+# Enforce SSH over https
+[url "git://"]
+	insteadOf = https://
+[url "git@github.com:"]
+	insteadOf = https://github.com
