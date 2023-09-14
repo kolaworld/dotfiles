@@ -96,6 +96,29 @@ let g:airline_mode_map = {
 
 
 "==============================
+" vim-copilot
+"==============================
+
+let g:copilot_filetypes = {
+    \ 'gitcommit': v:true,
+    \ 'markdown': v:true,
+    \ 'yaml': v:true,
+  \ }
+
+imap <silent><script><expr> <c-@> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
+imap <silent> <Tab> <Plug>(copilot-next)
+imap <silent> <S-Tab> <Plug>(copilot-previous)
+
+" disable copilot for files larger than 100kb
+autocmd BufReadPre *
+     \ let f=getfsize(expand("<afile>"))
+     \ | if f > 100000 || f == -2
+     \ | let b:copilot_enabled = v:false
+     \ | endif
+
+"==============================
 " vim-fugitive
 "==============================
 
@@ -133,25 +156,33 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 
 let g:coc_global_extensions = ['coc-json', 'coc-pyright']
 
-" Use <CR> to confirm completition when popup is open
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Use <Tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
+" Use tab for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config
+" inoremap <silent><expr> <TAB>
+"       \ coc#pum#visible() ? coc#pum#next(1) :
+"       \ CheckBackspace() ? "\<Tab>" :
+"       \ coc#refresh()
 
 " Use <S-Tab> to navigate back up the completion list:
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+
 
 " use <c-space> to trigger completion
-inoremap <silent><expr> <c-space> coc#refresh()
+" inoremap <silent><expr> <c-@> coc#refresh()
 
 " Remap keys for gotos
 nmap <silent> gd :vsp<CR><Plug>(coc-definition)

@@ -24,7 +24,7 @@
 	ignore = dirty
 [submodule "vim/pack/vendor/start/vim-endwise"]
 	path = vim/pack/vendor/start/vim-endwise
-	url = git://github.com/tpope/vim-endwise.git
+	url = https://github.com/tpope/vim-endwise.git
 	ignore = dirty
 [submodule "vim/pack/vendor/start/vim-airline-themes"]
 	path = vim/pack/vendor/start/vim-airline-themes
@@ -129,4 +129,8 @@
 [submodule "vim/pack/vendor/start/vim-rhubarb"]
 	path = vim/pack/vendor/start/vim-rhubarb
 	url = https://github.com/tpope/vim-rhubarb.git
+	ignore = dirty
+[submodule "vim/pack/vendor/start/copilot.vim"]
+	path = vim/pack/vendor/start/copilot.vim
+	url = https://github.com/github/copilot.vim.git
 	ignore = dirty

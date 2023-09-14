@@ -37,6 +37,7 @@ brew_forms=(
     "golangci-lint"
     "grc"
     "jq"
+    "lazydocker"
     "node"
     "openblas"
     "pipx"
