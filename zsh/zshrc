@@ -111,6 +111,9 @@ eval "$(rbenv init -)"
 # docker
 export COMPOSE_HTTP_TIMEOUT=300
 
+# lazy docker
+alias lzd='lazydocker'
+
 # golang
 export GOPATH=$HOME/code/go
 export GOROOT="$(brew --prefix golang)/libexec"
