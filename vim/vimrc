@@ -96,29 +96,6 @@ let g:airline_mode_map = {
 
 
 "==============================
-" vim-copilot
-"==============================
-
-let g:copilot_filetypes = {
-    \ 'gitcommit': v:true,
-    \ 'markdown': v:true,
-    \ 'yaml': v:true,
-  \ }
-
-imap <silent><script><expr> <c-@> copilot#Accept("\<CR>")
-let g:copilot_no_tab_map = v:true
-
-imap <silent> <Tab> <Plug>(copilot-next)
-imap <silent> <S-Tab> <Plug>(copilot-previous)
-
-" disable copilot for files larger than 100kb
-autocmd BufReadPre *
-     \ let f=getfsize(expand("<afile>"))
-     \ | if f > 100000 || f == -2
-     \ | let b:copilot_enabled = v:false
-     \ | endif
-
-"==============================
 " vim-fugitive
 "==============================
 
@@ -151,6 +128,30 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 "let g:endwise_no_mappings = 1
 
 "==============================
+" vim-copilot
+"==============================
+
+let g:copilot_filetypes = {
+    \ 'gitcommit': v:true,
+    \ 'markdown': v:true,
+    \ 'yaml': v:true,
+  \ }
+
+imap <silent><script><expr> <c-@> copilot#Accept("")
+let g:copilot_no_tab_map = v:true
+
+" imap <silent> <Tab> <Plug>(copilot-next)
+" imap <silent> <S-Tab> <Plug>(copilot-previous)
+
+" disable copilot for files larger than 100kb
+autocmd BufReadPre *
+     \ let f=getfsize(expand("<afile>"))
+     \ | if f > 100000 || f == -2
+     \ | let b:copilot_enabled = v:false
+     \ | endif
+
+
+"==============================
 " CONQUER OF COMPLETION
 "==============================
 
@@ -161,13 +162,13 @@ let g:coc_global_extensions = ['coc-json', 'coc-pyright']
 " no select by `"suggest.noselect": true` in your configuration file
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config
-" inoremap <silent><expr> <TAB>
-"       \ coc#pum#visible() ? coc#pum#next(1) :
-"       \ CheckBackspace() ? "\<Tab>" :
-"       \ coc#refresh()
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
 
 " Use <S-Tab> to navigate back up the completion list:
-" inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice
@@ -268,7 +269,9 @@ let g:python_highlight_all = 1
 "==============================
 " SimplyFold
 "==============================
-let g:SimpylFold_docstring_preview = 1
+" let g:SimpylFold_docstring_preview = 1
+" let g:SimpylFold_fold_docstring	 = 0
+" let b:SimpylFold_fold_docstring	 = 0
 
 "==============================
 " ALE
@@ -288,8 +291,9 @@ let g:ale_disable_lsp = 1
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
 
-let g:ale_go_golangci_lint_options = "--enable=bodyclose,exhaustive,rowserrcheck --disable=errcheck"
+let g:ale_go_golangci_lint_options = "--enable=asciicheck,bidichk,bodyclose,durationcheck,exhaustive,exportloopref,forcetypeassert,gosec,misspell,nolintlint,rowserrcheck,sqlclosecheck,unused,wastedassign --disable=depguard,errcheck,forbidigo"
 let g:ale_go_golangci_lint_package = 1
+let g:ale_python_flake8_options = "--extend-exclude=*/.venv"
 " move cursor to next/prev lint error
 nmap <silent> <leader>e :ALENextWrap<CR>
 nmap <silent> <leader>E :ALEPreviousWrap<CR>

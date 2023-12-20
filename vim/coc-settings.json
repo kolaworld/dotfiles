@@ -11,5 +11,9 @@
                 "usePlaceholders": true
             }
         }
-    }
+    },
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportGeneralTypeIssues": "warning"
+    },
+    "python.linting.ignorePatterns": ["**/site-packages/**/*.py"]
 }
