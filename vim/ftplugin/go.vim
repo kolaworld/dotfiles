@@ -8,4 +8,4 @@ setlocal nofoldenable
 " ale
 "==============================
 let b:ale_linters = ['golangci-lint', 'go vet']
-let b:ale_fixers = ['goimports']
+let b:ale_fixers = ['goimports', 'gofmt']

@@ -6,7 +6,7 @@
             "command": "gopls",
             "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
             "filetypes": ["go"],
-            "disableWorkspaceFolders": true,
+            "disabledFeatures": ["disableWorkspaceFolders"],
             "initializationOptions": {
                 "usePlaceholders": true
             }
