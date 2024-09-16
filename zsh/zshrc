@@ -140,3 +140,6 @@ if [ -f '/Users/kolaawe/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kolaawe
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/kolaawe/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kolaawe/google-cloud-sdk/completion.zsh.inc'; fi
+
+# boundary app over cli - temp fix
+export PATH="/Applications/Boundary.app/Contents/Resources/cli:$PATH"
